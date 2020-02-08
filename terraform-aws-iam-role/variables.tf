@@ -45,3 +45,18 @@ variable "policy_description" {
   type        = string
   description = "The description of the IAM policy that is visible in the IAM policy manager"
 }
+
+variable "addtional_policy_arns" {
+  description = "Optional additional attached IAM policy ARNs."
+  type        = "list"
+  default     = []
+}
+
+variable "create_ec2_profile" {
+  default = false
+}
+
+variable "path" {
+  description = "If provided, all IAM roles will be created on this path."
+  default     = "/"
+}

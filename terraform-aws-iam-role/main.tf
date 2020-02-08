@@ -42,3 +42,20 @@ resource "aws_iam_role_policy_attachment" "default" {
   role       = aws_iam_role.default[0].name
   policy_arn = aws_iam_policy.default[0].arn
 }
+
+resource aws_iam_role_policy_attachment "additional" {
+  count      = "${length(var.addtional_policy_arns)}"
+  policy_arn = "${element(var.addtional_policy_arns, count.index)}"
+  role       = "${aws_iam_role.default.name}"
+}
+
+resource "aws_iam_instance_profile" "this" {
+  count = "${var.create_ec2_profile}"
+  name  = "${var.name}-profile"
+  role  = "${aws_iam_role.default.name}"
+  path  = "${var.path}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}

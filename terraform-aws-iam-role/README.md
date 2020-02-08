@@ -92,8 +92,10 @@ and gives permission to the entities specified in `principals_arns` to assume th
 | policy_description | The description of the IAM policy that is visible in the IAM policy manager | string | - | yes |
 | policy_document_count | Number of policy documents (length of policy_documents list). | string | `1` | no |
 | policy_documents | List of JSON IAM policy documents | list | `<list>` | no |
+| additional_policy_arns | List of additional policy arns | list | `<list>` | no |
 | principals | Map of service name as key and a list of ARNs to allow assuming the role as value. (e.g. map(`AWS`, list(`arn:aws:iam:::role/admin`))) | map | `<map>` | no |
 | role_description | The description of the IAM role that is visible in the IAM role manager | string | - | yes |
+| create_ec2_profile | Flag set to true to create EC2 role profile | boolean | - | false |
 | tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`) | map | `<map>` | no |
 
 ## Outputs
