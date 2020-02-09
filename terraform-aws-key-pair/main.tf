@@ -18,20 +18,20 @@ resource "aws_key_pair" "generated" {
   count      = var.generate_ssh_key == true ? 1 : 0
   depends_on = [tls_private_key.default]
   key_name   = var.key_name
-  public_key = tls_private_key.default.public_key_openssh
+  public_key = tls_private_key.default[0].public_key_openssh
 }
 
 resource "local_file" "public_key_openssh" {
   count      = var.generate_ssh_key == true ? 1 : 0
   depends_on = [tls_private_key.default]
-  content    = tls_private_key.default.public_key_openssh
+  content    = tls_private_key.default[0].public_key_openssh
   filename   = local.public_key_filename
 }
 
 resource "local_file" "private_key_pem" {
   count      = var.generate_ssh_key == true ? 1 : 0
   depends_on = [tls_private_key.default]
-  content    = tls_private_key.default.private_key_pem
+  content    = tls_private_key.default[0].private_key_pem
   filename   = local.private_key_filename
 }
 

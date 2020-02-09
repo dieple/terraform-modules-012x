@@ -3,7 +3,7 @@ variable "key_name" {
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map
   default     = {}
   description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)"
 }
