@@ -6,6 +6,7 @@ variable "zone_name" {
 variable "main_vpc" {
   type        = string
   description = "Main VPC ID that will be associated with this hosted zone"
+  default     = ""
 }
 
 variable "parent_zone_name" {
